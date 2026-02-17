@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Asistencia - SIAA</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <i class="fas fa-arrow-left" onclick="window.location.href='docente-panel.html'" style="cursor: pointer; font-size: 20px; margin-right: 10px;"></i>
+        <h1 class="header-title">Registrar Asistencia</h1>
+    </header>
+
+    <!-- Contenedor Principal -->
+    <div class="container">
+        <div class="main-content">
+            <h2 class="main-title">Registro de Asistencia</h2>
+
+            <!-- Información de la clase -->
+            <div class="card">
+                <h3 class="card-title">Información de la Clase</h3>
+                
+                <div class="filters-container">
+                    <div class="form-group" style="flex: 1;">
+                        <label class="form-label">Materia</label>
+                        <select class="form-select" id="materiaSelect">
+                            <option value="Programación Web">Programación Web</option>
+                            <option value="Base de Datos">Base de Datos</option>
+                            <option value="Redes">Redes</option>
+                            <option value="Matemáticas">Matemáticas</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group" style="flex: 1;">
+                        <label class="form-label">Grupo</label>
+                        <select class="form-select" id="grupoSelect">
+                            <option value="8A">8A</option>
+                            <option value="8B">8B</option>
+                            <option value="4A">4A</option>
+                            <option value="4B">4B</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group" style="flex: 1;">
+                        <label class="form-label">Fecha</label>
+                        <input type="date" class="form-input" id="fechaAsistencia">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lista de alumnos -->
+            <div class="card">
+                <div class="flex-between mb-20">
+                    <h3 class="card-title">Lista de Alumnos</h3>
+                    <div>
+                        <button class="btn btn-success btn-icon" onclick="marcarTodos(true)">
+                            <i class="fas fa-check"></i> Todos
+                        </button>
+                        <button class="btn btn-danger btn-icon" onclick="marcarTodos(false)" style="margin-left: 10px;">
+                            <i class="fas fa-times"></i> Ninguno
+                        </button>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Alumno</th>
+                                <th>Matrícula</th>
+                                <th>Asistencia</th>
+                                <th>Comentarios</th>
+                            </tr>
+                        </thead>
+                        <tbody id="alumnosTableBody">
+                            <!-- Se llenará dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="mt-20 text-center">
+                    <button class="btn btn-success" onclick="guardarAsistencias()" style="padding: 15px 50px;">Guardar Asistencias</button>
+                    <button class="btn btn-secondary" onclick="cancelar()" style="padding: 15px 50px; margin-left: 15px;">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="registrar-asistencia.js"></script>
+</body>
+</html>

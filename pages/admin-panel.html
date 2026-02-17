@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administrador - SIAA</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <i class="fas fa-user-shield" style="font-size: 20px; margin-right: 10px;"></i>
+        <h1 class="header-title">Panel del Administrador</h1>
+        <img src="https://ui-avatars.com/api/?name=Admin&background=3B7DD6&color=fff&size=35" alt="Avatar" class="user-avatar-header" id="userAvatar">
+    </header>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <ul class="sidebar-menu">
+            <li class="sidebar-item active" data-view="usuarios">
+                <i class="fas fa-users sidebar-icon"></i>
+                <span>Usuarios</span>
+            </li>
+            <li class="sidebar-item" data-view="materias">
+                <i class="fas fa-book sidebar-icon"></i>
+                <span>Materias</span>
+            </li>
+            <li class="sidebar-item" data-view="grupos">
+                <i class="fas fa-user-friends sidebar-icon"></i>
+                <span>Grupos</span>
+            </li>
+            <li class="sidebar-item" data-view="salir">
+                <i class="fas fa-sign-out-alt sidebar-icon"></i>
+                <span>Salir</span>
+            </li>
+        </ul>
+    </aside>
+
+    <!-- Dashboard Container -->
+    <div class="dashboard-container">
+        <!-- Vista de Usuarios -->
+        <div id="usuariosView" class="view-content">
+            <div class="card">
+                <div class="flex-between mb-20">
+                    <h3 class="card-title">Gestión de Usuarios</h3>
+                    <button class="btn btn-primary" onclick="mostrarFormularioUsuario()">
+                        + Agregar Usuario
+                    </button>
+                </div>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Rol</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="usuariosTableBody">
+                            <tr>
+                                <td>
+                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                        <img src="https://ui-avatars.com/api/?name=Cynthia+Martinez&background=E91E63&color=fff&size=30" alt="Avatar" style="border-radius: 50%;">
+                                        <span>Cynthia Martinez</span>
+                                    </div>
+                                </td>
+                                <td>Alumno</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn btn-primary btn-icon"><i class="fas fa-edit"></i></button>
+                                        <button class="btn btn-danger btn-icon"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                        <img src="https://ui-avatars.com/api/?name=Maria+Salvador&background=9C27B0&color=fff&size=30" alt="Avatar" style="border-radius: 50%;">
+                                        <span>Maria Salvador</span>
+                                    </div>
+                                </td>
+                                <td>Docente</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn btn-primary btn-icon"><i class="fas fa-edit"></i></button>
+                                        <button class="btn btn-danger btn-icon"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                        <img src="https://ui-avatars.com/api/?name=Melanie+Figueroa&background=FF9800&color=fff&size=30" alt="Avatar" style="border-radius: 50%;">
+                                        <span>Melanie Figueroa</span>
+                                    </div>
+                                </td>
+                                <td>Alumno</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn btn-primary btn-icon"><i class="fas fa-edit"></i></button>
+                                        <button class="btn btn-danger btn-icon"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="mt-20 text-center">
+                    <button class="btn btn-secondary">Cancelar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vista de Materias -->
+        <div id="materiasView" class="view-content" style="display: none;">
+            <div class="card">
+                <div class="flex-between mb-20">
+                    <h3 class="card-title">Materias</h3>
+                    <button class="btn btn-primary" onclick="mostrarFormularioMateria()">
+                        + Agregar Materia
+                    </button>
+                </div>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Docente</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="materiasTableBody">
+                            <tr>
+                                <td>
+                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                        <i class="fas fa-book-open" style="font-size: 20px;"></i>
+                                        <span>Programación Web</span>
+                                    </div>
+                                </td>
+                                <td>Jesus Avila</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn btn-primary btn-icon"><i class="fas fa-edit"></i></button>
+                                        <button class="btn btn-danger btn-icon"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                        <i class="fas fa-book-open" style="font-size: 20px;"></i>
+                                        <span>Matemáticas</span>
+                                    </div>
+                                </td>
+                                <td>Alejandro Sanford</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn btn-primary btn-icon"><i class="fas fa-edit"></i></button>
+                                        <button class="btn btn-danger btn-icon"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                        <i class="fas fa-book-open" style="font-size: 20px;"></i>
+                                        <span>Diseño</span>
+                                    </div>
+                                </td>
+                                <td>Erick</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn btn-primary btn-icon"><i class="fas fa-edit"></i></button>
+                                        <button class="btn btn-danger btn-icon"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="mt-20 text-center">
+                    <button class="btn btn-success">Agregar Materia</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vista de Grupos -->
+        <div id="gruposView" class="view-content" style="display: none;">
+            <div class="card">
+                <h3 class="card-title">Lista del Grupo</h3>
+                
+                <!-- Filtros -->
+                <div class="filters-container">
+                    <select class="form-select" id="programacionFilter">
+                        <option value="Programacion">Programación</option>
+                        <option value="Matematicas">Matemáticas</option>
+                        <option value="Diseno">Diseño</option>
+                    </select>
+                    
+                    <select class="form-select" id="grupoFilterAdmin">
+                        <option value="A">Grupo: A</option>
+                        <option value="B">Grupo: B</option>
+                        <option value="C">Grupo: C</option>
+                    </select>
+                    
+                    <input type="text" class="search-input" id="searchAlumno" placeholder="Buscar alumno...">
+                </div>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>E-mail</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="gruposTableBody">
+                            <tr>
+                                <td>
+                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                        <img src="https://ui-avatars.com/api/?name=Cynthia+Martinez&background=E91E63&color=fff&size=30" alt="Avatar" style="border-radius: 50%;">
+                                        <span>Cynthia Martinez</span>
+                                    </div>
+                                </td>
+                                <td>1221100869@utqueretaro.edu.mx</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn btn-primary btn-icon"><i class="fas fa-edit"></i></button>
+                                        <button class="btn btn-danger btn-icon"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                        <img src="https://ui-avatars.com/api/?name=Nadia+Sanador&background=9C27B0&color=fff&size=30" alt="Avatar" style="border-radius: 50%;">
+                                        <span>Nadia Sanador</span>
+                                    </div>
+                                </td>
+                                <td>nadia.Serna009@gmail.com</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn btn-primary btn-icon"><i class="fas fa-edit"></i></button>
+                                        <button class="btn btn-danger btn-icon"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                        <img src="https://ui-avatars.com/api/?name=Melanie+Figueroa&background=FF9800&color=fff&size=30" alt="Avatar" style="border-radius: 50%;">
+                                        <span>Melanie Figueroa</span>
+                                    </div>
+                                </td>
+                                <td>meli_fig77@gmail.com</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn btn-primary btn-icon"><i class="fas fa-edit"></i></button>
+                                        <button class="btn btn-danger btn-icon"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="mt-20 text-center">
+                    <button class="btn btn-secondary">Salir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para Agregar Usuario -->
+    <div id="modalUsuario" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center;">
+        <div style="background: white; padding: 30px; border-radius: 8px; width: 90%; max-width: 500px;">
+            <h3 style="margin-bottom: 20px;">Agregar Usuario</h3>
+            
+            <div class="form-group">
+                <label class="form-label">Nombre Completo</label>
+                <input type="text" class="form-input" id="nombreUsuario" placeholder="Cynthia Martinez Ozuna">
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Rol</label>
+                <select class="form-select" id="rolUsuario">
+                    <option value="alumno">Alumno</option>
+                    <option value="docente">Docente</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Correo</label>
+                <input type="email" class="form-input" id="correoUsuario" placeholder="ejemplo@utqueretaro.edu.mx">
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Contraseña</label>
+                <input type="password" class="form-input" id="passwordUsuario">
+            </div>
+            
+            <div class="action-buttons" style="justify-content: flex-end; margin-top: 20px;">
+                <button class="btn btn-success" onclick="guardarUsuario()">Guardar Usuario</button>
+                <button class="btn btn-secondary" onclick="cerrarModalUsuario()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para Agregar Materia -->
+    <div id="modalMateria" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center;">
+        <div style="background: white; padding: 30px; border-radius: 8px; width: 90%; max-width: 500px;">
+            <h3 style="margin-bottom: 20px;">Agregar Materia</h3>
+            
+            <div class="form-group">
+                <label class="form-label">Nombre de la Materia</label>
+                <input type="text" class="form-input" id="nombreMateria" placeholder="Programación">
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Nombre del Docente</label>
+                <input type="text" class="form-input" id="docenteMateria" placeholder="Jesus Avila">
+            </div>
+            
+            <div class="action-buttons" style="justify-content: flex-end; margin-top: 20px;">
+                <button class="btn btn-success" onclick="guardarMateria()">Guardar Materia</button>
+                <button class="btn btn-secondary" onclick="cerrarModalMateria()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin-panel.js"></script>
+</body>
+</html>
