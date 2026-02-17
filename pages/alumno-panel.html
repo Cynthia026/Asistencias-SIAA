@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Alumno - SIAA</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <i class="fas fa-user-graduate" style="font-size: 20px; margin-right: 10px;"></i>
+        <h1 class="header-title">Panel de Alumno</h1>
+        <img src="https://ui-avatars.com/api/?name=Alumno&background=3B7DD6&color=fff&size=35" alt="Avatar" class="user-avatar-header" id="userAvatar">
+    </header>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <ul class="sidebar-menu">
+            <li class="sidebar-item active" data-view="asistencias">
+                <i class="fas fa-chart-bar sidebar-icon"></i>
+                <span>Asistencias</span>
+            </li>
+            <li class="sidebar-item" data-view="perfil">
+                <i class="fas fa-user sidebar-icon"></i>
+                <span>Perfil</span>
+            </li>
+            <li class="sidebar-item" data-view="salir">
+                <i class="fas fa-sign-out-alt sidebar-icon"></i>
+                <span>Salir</span>
+            </li>
+        </ul>
+    </aside>
+
+    <!-- Dashboard Container -->
+    <div class="dashboard-container">
+        <!-- Bienvenida -->
+        <h2 class="dashboard-welcome" id="welcomeMessage">Bienvenido, Alumno</h2>
+
+        <!-- Vista de Asistencias -->
+        <div id="asistenciasView" class="view-content">
+            <div class="card">
+                <h3 class="card-title">Mis asistencias</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Materia</th>
+                                <th>Asistencias</th>
+                                <th>Porcentaje</th>
+                            </tr>
+                        </thead>
+                        <tbody id="asistenciasTableBody">
+                            <tr>
+                                <td>Redes</td>
+                                <td>10</td>
+                                <td><span class="percentage percentage-high">95%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Base de Datos</td>
+                                <td>15</td>
+                                <td><span class="percentage percentage-high">93%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Sistemas operativos</td>
+                                <td>17</td>
+                                <td><span class="percentage percentage-high">95%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Programación</td>
+                                <td>20</td>
+                                <td><span class="percentage percentage-low">15%</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vista de Perfil -->
+        <div id="perfilView" class="view-content" style="display: none;">
+            <div class="card">
+                <h3 class="card-title">Perfil</h3>
+                <div class="profile-container">
+                    <div style="position: relative; display: inline-block;">
+                        <img src="https://ui-avatars.com/api/?name=Cynthia+Martinez&background=E91E63&color=fff&size=120" alt="Avatar" class="profile-avatar" id="profileAvatar">
+                        <button class="btn btn-primary" style="position: absolute; bottom: 0; right: 0; border-radius: 50%; padding: 8px 12px; font-size: 16px;" onclick="document.getElementById('photoInput').click()">
+                            <i class="fas fa-camera"></i>
+                        </button>
+                        <input type="file" id="photoInput" accept="image/*" style="display: none;" onchange="cambiarFotoPerfil(event)">
+                    </div>
+                    <h3 class="profile-name" id="profileName">Cynthia Martinez</h3>
+                    
+                    <div class="profile-info">
+                        <div class="info-row">
+                            <span class="info-label">Matrícula:</span>
+                            <span class="info-value" id="profileMatricula">2011089</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Nombre:</span>
+                            <span class="info-value" id="profileNombre">Cynthia Martinez Garcia</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Correo:</span>
+                            <span class="info-value" id="profileCorreo">1221100869@itpachuca.edu.mx</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Carrera:</span>
+                            <span class="info-value" id="profileCarrera">Ingeniería en Sistemas Computacionales</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Semestre:</span>
+                            <span class="info-value" id="profileSemestre">8°</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/alumno-panel.js"></script>
+</body>
+</html>
