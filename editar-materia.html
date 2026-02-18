@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Materia - SIAA</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <i class="fas fa-arrow-left" onclick="window.location.href='admin-panel.html'" style="cursor: pointer; font-size: 20px; margin-right: 10px;"></i>
+        <h1 class="header-title">Editar Materia</h1>
+    </header>
+
+    <!-- Contenedor Principal -->
+    <div class="container">
+        <div class="main-content">
+            <h2 class="main-title">Editar Información de la Materia</h2>
+
+            <div class="form-container" style="max-width: 600px;">
+                <form id="editMateriaForm">
+                    <div class="form-group">
+                        <label class="form-label" for="nombreMateria">Nombre de la Materia</label>
+                        <input 
+                            type="text" 
+                            id="nombreMateria" 
+                            class="form-input" 
+                            placeholder="Ej: Programación Web"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="docenteMateria">Nombre del Docente</label>
+                        <input 
+                            type="text" 
+                            id="docenteMateria" 
+                            class="form-input" 
+                            placeholder="Ej: Jesus Avila"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="codigoMateria">Código de la Materia</label>
+                        <input 
+                            type="text" 
+                            id="codigoMateria" 
+                            class="form-input" 
+                            placeholder="Ej: PROG-101"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="creditosMateria">Créditos</label>
+                        <input 
+                            type="number" 
+                            id="creditosMateria" 
+                            class="form-input" 
+                            placeholder="Número de créditos"
+                            min="1"
+                            max="10"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="horarioMateria">Horario</label>
+                        <input 
+                            type="text" 
+                            id="horarioMateria" 
+                            class="form-input" 
+                            placeholder="Ej: Lunes y Miércoles 8:00-10:00"
+                        >
+                    </div>
+
+                    <div class="action-buttons" style="display: flex; gap: 15px; margin-top: 30px;">
+                        <button type="submit" class="btn btn-success" style="flex: 1;">Guardar Cambios</button>
+                        <button type="button" class="btn btn-secondary" onclick="cancelar()" style="flex: 1;">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="editar-materia.js"></script>
+</body>
+</html>
