@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reportes - SIAA</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <i class="fas fa-arrow-left" onclick="window.location.href='docente-panel.html'" style="cursor: pointer; font-size: 20px; margin-right: 10px;"></i>
+        <h1 class="header-title">Reportes y Estadísticas</h1>
+    </header>
+
+    <!-- Contenedor Principal -->
+    <div class="container">
+        <div class="main-content">
+            <h2 class="main-title">Reportes de Asistencia</h2>
+
+            <!-- Filtros -->
+            <div class="card">
+                <h3 class="card-title">Filtros</h3>
+                <div class="filters-container">
+                    <div class="form-group" style="flex: 1;">
+                        <label class="form-label">Materia</label>
+                        <select class="form-select" id="materiaFilter">
+                            <option value="">Todas las materias</option>
+                            <option value="Programación Web">Programación Web</option>
+                            <option value="Base de Datos">Base de Datos</option>
+                            <option value="Redes">Redes</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group" style="flex: 1;">
+                        <label class="form-label">Grupo</label>
+                        <select class="form-select" id="grupoFilter">
+                            <option value="">Todos los grupos</option>
+                            <option value="8A">8A</option>
+                            <option value="8B">8B</option>
+                            <option value="4A">4A</option>
+                            <option value="4B">4B</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group" style="flex: 1;">
+                        <label class="form-label">Fecha Inicio</label>
+                        <input type="date" class="form-input" id="fechaInicio">
+                    </div>
+                    
+                    <div class="form-group" style="flex: 1;">
+                        <label class="form-label">Fecha Fin</label>
+                        <input type="date" class="form-input" id="fechaFin">
+                    </div>
+                </div>
+                <div class="mt-20">
+                    <button class="btn btn-primary" onclick="generarReporte()">
+                        <i class="fas fa-chart-line" style="margin-right: 8px;"></i>
+                        Generar Reporte
+                    </button>
+                    <button class="btn btn-success" onclick="exportarReporte()" style="margin-left: 10px;">
+                        <i class="fas fa-file-excel" style="margin-right: 8px;"></i>
+                        Exportar a Excel
+                    </button>
+                </div>
+            </div>
+
+            <!-- Estadísticas Generales -->
+            <div class="card" id="estadisticasCard" style="display: none;">
+                <h3 class="card-title">Estadísticas Generales</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                    <div style="background: #E3F2FD; padding: 20px; border-radius: 8px; text-align: center;">
+                        <div style="font-size: 32px; font-weight: bold; color: #1976D2;" id="totalClases">0</div>
+                        <div style="color: #666; margin-top: 5px;">Total de Clases</div>
+                    </div>
+                    <div style="background: #E8F5E9; padding: 20px; border-radius: 8px; text-align: center;">
+                        <div style="font-size: 32px; font-weight: bold; color: #388E3C;" id="promedioAsistencia">0%</div>
+                        <div style="color: #666; margin-top: 5px;">Promedio de Asistencia</div>
+                    </div>
+                    <div style="background: #FFF3E0; padding: 20px; border-radius: 8px; text-align: center;">
+                        <div style="font-size: 32px; font-weight: bold; color: #F57C00;" id="totalAlumnos">0</div>
+                        <div style="color: #666; margin-top: 5px;">Total de Alumnos</div>
+                    </div>
+                    <div style="background: #FCE4EC; padding: 20px; border-radius: 8px; text-align: center;">
+                        <div style="font-size: 32px; font-weight: bold; color: #C2185B;" id="alumnosRiesgo">0</div>
+                        <div style="color: #666; margin-top: 5px;">Alumnos en Riesgo (&lt;80%)</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabla de Reporte -->
+            <div class="card" id="reporteCard" style="display: none;">
+                <h3 class="card-title">Detalle de Asistencias por Alumno</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Alumno</th>
+                                <th>Matrícula</th>
+                                <th>Asistencias</th>
+                                <th>Faltas</th>
+                                <th>Porcentaje</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody id="reporteTableBody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Gráfica (placeholder) -->
+            <div class="card" id="graficaCard" style="display: none;">
+                <h3 class="card-title">Tendencia de Asistencias</h3>
+                <div style="padding: 40px; text-align: center; background: #f5f5f5; border-radius: 8px;">
+                    <i class="fas fa-chart-area" style="font-size: 60px; color: #1E5BA8; margin-bottom: 20px;"></i>
+                    <p style="color: #666;">Aquí se mostraría una gráfica de tendencia de asistencias</p>
+                    <p style="color: #999; font-size: 14px; margin-top: 10px;">
+                        (Para implementar: usar Chart.js o similar)
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="reportes.js"></script>
+</body>
+</html>
